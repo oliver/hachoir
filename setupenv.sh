@@ -18,7 +18,13 @@ subprojects=[
 ]
 
 cur_dir = getcwd()
-path_list = environ["PYTHONPATH"].split(':')
+try:
+  #maybe PYTHONPATH is not set at all
+  path = environ["PYTHONPATH"]
+except KeyError:
+  path = ''
+
+path_list = path.split(':')
 try:
   #occurs when the path is set but empty
   path_list.remove('')
