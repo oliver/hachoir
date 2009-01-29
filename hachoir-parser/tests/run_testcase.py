@@ -462,6 +462,14 @@ def checkSwat(parser): return (
     checkValue(parser, "jpeg_header_len", 10),
 )
 
+def checkPrsPak(parser): return (
+    checkValue(parser, "magic", "PACK"),
+    checkValue(parser, "file[0]/filename", "hachoir/png_331x90x8_truncated.png"),
+    checkValue(parser, "file[0]/size", 100),
+    checkValue(parser, "file[1]/filename", "hachoir/small_text.tar"),
+    checkValue(parser, "file[1]/size", 10240),
+)
+
 def checkFile(filename, check_parser):
     sys.stdout.write("  - Create parser: ")
     sys.stdout.flush()
@@ -630,6 +638,7 @@ testcase_files = (
     # radpoor.doc
     # quicktime.mp4
     (u"swat.blp", checkSwat),
+    (u"paktest.pak", checkPrsPak),
 )
 
 if __name__ == "__main__":

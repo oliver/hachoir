@@ -90,6 +90,7 @@ testcase_files = (
     (u"radpoor.doc", 103936, "114835a03be92e02029c74ece1162c3e"),
     (u"quicktime.mp4", 245779, "dc77a8de8c091c19d86df74280f6feb7"),
     (u"swat.blp", 55753, "a47a2d6ef61c9005c3f5faf1bca253af"),
+    (u"paktest.pak", 10464, "53ded116d139dbb172280f9e267ad3ed"),
 )
 
 def stringMD5(text):
