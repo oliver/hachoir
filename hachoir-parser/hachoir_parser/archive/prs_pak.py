@@ -14,7 +14,7 @@ from hachoir_core.endian import LITTLE_ENDIAN, BIG_ENDIAN
 
 class FileEntry(FieldSet):
     def createFields(self):
-        yield String(self, "filename", 56)
+        yield String(self, "filename", 56, truncate="\0")
         yield UInt32(self, "size")
         yield RawBytes(self, "data", self["size"].value)
 
