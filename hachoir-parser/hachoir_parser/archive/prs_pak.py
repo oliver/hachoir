@@ -9,8 +9,15 @@ Creation date: 2008-01-29
 
 from hachoir_parser import Parser
 from hachoir_core.field import (ParserError,
-    UInt8, UInt16, UInt32, String, RawBytes)
+    UInt8, UInt16, UInt32, String, RawBytes, FieldSet)
 from hachoir_core.endian import LITTLE_ENDIAN, BIG_ENDIAN
+
+class FileEntry(FieldSet):
+    def createFields(self):
+        yield String(self, "filename", 56)
+        yield UInt32(self, "size")
+        yield RawBytes(self, "data", self["size"].value)
+
 
 class PRSPakFile(Parser):
     PARSER_TAGS = {
@@ -30,6 +37,6 @@ class PRSPakFile(Parser):
     def createFields(self):
         yield String(self, "magic", 4)
 
-        # Read rest of the file (if any)
-        if self.current_size < self._size:
-            yield self.seekBit(self._size, "end")
+        # all remaining data must be file entries:
+        while self.current_size < self._size:
+            yield FileEntry(self, "file[]")
