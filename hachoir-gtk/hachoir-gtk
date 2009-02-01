@@ -47,7 +47,7 @@ class Interface:
                 #value = field.display
                 value = field.raw_display
             else:
-                value = ""
+                value = field.description
             newparent = treeStore.append(treeparent,(field.name,value))
             if field.is_field_set:
                 self.fill_tree(field, newparent, treeStore)
