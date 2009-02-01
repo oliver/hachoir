@@ -4,7 +4,7 @@ Parallel Realities Starfighter .pak file parser
 See http://www.parallelrealities.co.uk/projects/starfighter.php
 
 Author: Oliver Gerlich
-Creation date: 2008-01-29
+Creation date: 2009-01-29
 """
 
 from hachoir_parser import Parser
