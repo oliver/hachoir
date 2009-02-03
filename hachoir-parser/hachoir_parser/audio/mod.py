@@ -80,10 +80,10 @@ class Header(FieldSet):
 class Note(FieldSet):
     static_size = 8*4
     def createFields(self):
-        yield Bits(self, 4, "note_hi_nibble")
-        yield Bits(self, 12, "period")
-        yield Bits(self, 4, "note_low_nibble")
-        yield Bits(self, 4, "effect")
+        yield Bits(self, "note_hi_nibble", 4)
+        yield Bits(self, "period", 12)
+        yield Bits(self, "note_low_nibble", 4)
+        yield Bits(self, "effect", 4)
         yield UInt8(self, "parameter")
 
 class Row(FieldSet):
