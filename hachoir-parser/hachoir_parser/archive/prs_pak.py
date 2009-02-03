@@ -19,6 +19,8 @@ class FileEntry(FieldSet):
         yield filesizeHandler(UInt32(self, "size"))
         yield SubFile(self, "data", self["size"].value, filename=self["filename"].value)
 
+    def createDescription(self):
+        return self["filename"].value
 
 class PRSPakFile(Parser):
     PARSER_TAGS = {
